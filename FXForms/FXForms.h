@@ -115,12 +115,17 @@ static NSString *const FXFormFieldTypeImage = @"image";
 @property (nonatomic, readonly) void (^action)(id sender);
 @property (nonatomic, readonly) id segue;
 @property (nonatomic, strong) id value;
+@property (nonatomic, readwrite) NSArray *options;
 
 - (NSUInteger)optionCount;
 - (NSString *)optionDescriptionAtIndex:(NSUInteger)index;
 - (void)setOptionSelected:(BOOL)selected atIndex:(NSUInteger)index;
 - (BOOL)isOptionSelectedAtIndex:(NSUInteger)index;
-
+- (BOOL)isIndexedType;
+- (NSString *)optionDescriptionAtIndex:(NSUInteger)index;
+- (BOOL)isCollectionType;
+- (NSString *)valueDescription:(id)value;
+- (NSString *)fieldDescription;
 @end
 
 

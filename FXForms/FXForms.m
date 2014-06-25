@@ -487,7 +487,6 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 @property (nonatomic, strong) Class valueClass;
 @property (nonatomic, strong) Class cell;
 @property (nonatomic, readwrite) NSString *key;
-@property (nonatomic, readwrite) NSArray *options;
 @property (nonatomic, readwrite) NSDictionary *fieldTemplate;
 @property (nonatomic, readwrite) BOOL isSortable;
 @property (nonatomic, readwrite) BOOL isInline;
