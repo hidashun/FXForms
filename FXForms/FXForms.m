@@ -619,7 +619,7 @@ static BOOL *FXFormSetValueForKey(id<FXForm> form, id value, NSString *key)
                     }
                 }];
                 
-                return value = [options count]? options: nil;
+                return value = [options count]? [options componentsJoinedByString:@", "]: nil;
             }
             
             return [value fieldDescription];
@@ -806,10 +806,14 @@ static BOOL *FXFormSetValueForKey(id<FXForm> form, id value, NSString *key)
         }
         for (NSUInteger i = 0; i < [field.options count]; i++)
         {
-            [fields addObject:@{FXFormFieldKey: [@(i) description],
-                                FXFormFieldTitle: [field optionDescriptionAtIndex:i],
-                                FXFormFieldType: FXFormFieldTypeOption,
-                                FXFormFieldAction: action}];
+            NSMutableDictionary *eachField = [@{FXFormFieldKey: [@(i) description],
+                                                FXFormFieldTitle: [field optionDescriptionAtIndex:i],
+                                                FXFormFieldType: FXFormFieldTypeOption,
+                                                FXFormFieldAction: action} mutableCopy];
+            if (17 < [field optionDescriptionAtIndex:i].length) {
+                eachField[@"textLabel.font"] = [UIFont systemFontOfSize:13.f];
+            }
+            [fields addObject:(NSDictionary *)eachField];
         }
         _fields = fields;
     }
